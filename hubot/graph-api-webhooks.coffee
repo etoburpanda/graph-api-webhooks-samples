@@ -24,8 +24,8 @@
 module.exports = (robot) ->
 
   robot.router.get ['/facebook', '/instagram'], (req, res) ->
-    if req.param('hub.mode') == 'subscribe' and req.param('hub.verify_token') == 'token'
-      res.send req.param('hub.challenge')
+    if req.query['hub.mode'] == 'subscribe' and req.query['hub.verify_token'] == 'token'
+      res.send req.query['hub.challenge']
     else
       res.send 400
 
